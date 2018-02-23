@@ -2,22 +2,12 @@ package goalfabeto
 
 import (
 	"fmt"
+	"sort"
 )
 
 /**
-	* Posição 1  = --romano 		|| --latino
-	* Posição 2  = --militar		|| --radio || --fone || --telefone || --otan || --nato || --icao || --itu || --imo || --faa || --ansi
-	* Posição 3  = --royal 			|| --royal-navy
-	* Posição 4  = --signalese 		|| --western-front
-	* Posição 5  = --raf24
-	* Posição 6  = --raf42
-	* Posição 7  = --raf43 			|| --raf
-	* Posição 8  = --us41 			|| --us
-	* Posição 9  = --pt 			|| --portugal
-	* Posição 10 = --name 			|| --names
-	* Posição 11 = --lapd
-	* Posição 12 = --morse
-**/
+ * mapDados = Objeto do tipo Mapa, que representa os alfabetos possíveis
+ */
 var mapDados = map[string][]string{
 	"A": {"Alpha", "Apples", "Ack", "Ace", "Apple", "Able/Affirm", "Able", "Aveiro", "Alan", "Adam", ".-"},
 	"B": {"Bravo", "Butter", "Beer", "Beer", "Beer", "Baker", "Baker", "Bragança", "Bobby", "Boy", "-..."},
@@ -47,12 +37,142 @@ var mapDados = map[string][]string{
 	"Z": {"Zulu", "Zebra", "Zebra", "Zebra", "Zebra", "Zebra", "Zebra", "Zulmira", "Zebedee", "Zebra", "--.."},
 }
 
-/*
-MostraTabela - A função exibe todo o conteúdo inserido na Tabela de Alfabeto.
-@Author: Paulo Praxedes
-*/
+/*MostraTabela - A função pública exibe todo o conteúdo inserido na Tabela de Alfabeto.
+ * @Author: Paulo Praxedes
+ */
 func MostraTabela() {
-	for index, valor := range mapDados {
-		fmt.Printf("%s - %+v\r\n", index, valor)
+	/*
+	 * Iteramos o map, baseados na ordem das chaves do array. Desta forma, garantimos a exibição dos dados ordenados
+	 */
+	for _, valor := range OrdenaMapa(mapDados) {
+		fmt.Printf("%s - %+v\r\n", valor, mapDados[valor])
 	}
+}
+
+/*MostraAlfabeto - A função pública exibe todo o conteúdo inserido na Tabela de Alfabeto, baseado no Tipo informado.
+ * @Author: Paulo Praxedes
+ */
+func MostraAlfabeto(tipo string) {
+	switch tipo {
+	case "--militar", "--radio", "--fone", "--telefone", "--otan", "--nato", "--icao", "--itu", "--imo", "--faa", "--ansi":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][0])
+		}
+	case "--romano", "--latino":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %s\r\n", valor, valor)
+		}
+	case "--royal", "--royal-navy":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][1])
+		}
+	case "--signalese", "--western-front":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][2])
+		}
+	case "--raf24":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][3])
+		}
+	case "--raf42":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][4])
+		}
+	case "--raf43", "--raf":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][5])
+		}
+	case "--us41", "--us":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][6])
+		}
+	case "--pt", "--portugal":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][7])
+		}
+	case "--name", "--names":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][8])
+		}
+	case "--lapd":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][9])
+		}
+	case "--morse":
+		for _, valor := range OrdenaMapa(mapDados) {
+			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][10])
+		}
+	}
+}
+
+/*MostraAlfabetoFormatado - A função pública exibe todo o conteúdo inserido na Tabela de Alfabeto, baseado no Tipo e
+ * palvra informado.
+ * @Author: Paulo Praxedes
+ */
+func MostraAlfabetoFormatado(tipo string, valor string) {
+	switch tipo {
+	case "--militar", "--radio", "--fone", "--telefone", "--otan", "--nato", "--icao", "--itu", "--imo", "--faa", "--ansi":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][0])
+		}
+	case "--romano", "--latino":
+		for _, caractere := range valor {
+			fmt.Printf("%s\r\n", string(caractere))
+		}
+	case "--royal", "--royal-navy":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][1])
+		}
+	case "--signalese", "--western-front":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][2])
+		}
+	case "--raf24":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][3])
+		}
+	case "--raf42":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][4])
+		}
+	case "--raf43", "--raf":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][5])
+		}
+	case "--us41", "--us":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][6])
+		}
+	case "--pt", "--portugal":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][7])
+		}
+	case "--name", "--names":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][8])
+		}
+	case "--lapd":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][9])
+		}
+	case "--morse":
+		for _, caractere := range valor {
+			fmt.Printf("%s - %s\r\n", string(caractere), mapDados[string(caractere)][10])
+		}
+	default:
+		fmt.Printf("Valor digitado, não encontrado na tabela. :(")
+	}
+}
+
+/*OrdenaMapa - A função privada ordena o mapa
+ * @Author: Paulo Praxedes
+ */
+func OrdenaMapa(mapa map[string][]string) (keys []string) {
+	for k := range mapa {
+		keys = append(keys, k)
+	}
+
+	sort.Strings(keys) // Colocamos em ordem alfabética, para uma melhor legibilidade
+
+	return
 }
