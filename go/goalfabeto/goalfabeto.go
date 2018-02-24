@@ -44,7 +44,7 @@ func MostraTabela() {
 	/*
 	 * Iteramos o map, baseados na ordem das chaves do array. Desta forma, garantimos a exibição dos dados ordenados
 	 */
-	for _, valor := range OrdenaMapa(mapDados) {
+	for _, valor := range ordenaMapa(mapDados) {
 		fmt.Printf("%s - %+v\r\n", valor, mapDados[valor])
 	}
 }
@@ -55,51 +55,51 @@ func MostraTabela() {
 func MostraAlfabeto(tipo string) {
 	switch tipo {
 	case "--militar", "--radio", "--fone", "--telefone", "--otan", "--nato", "--icao", "--itu", "--imo", "--faa", "--ansi":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][0])
 		}
 	case "--romano", "--latino":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %s\r\n", valor, valor)
 		}
 	case "--royal", "--royal-navy":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][1])
 		}
 	case "--signalese", "--western-front":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][2])
 		}
 	case "--raf24":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][3])
 		}
 	case "--raf42":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][4])
 		}
 	case "--raf43", "--raf":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][5])
 		}
 	case "--us41", "--us":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][6])
 		}
 	case "--pt", "--portugal":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][7])
 		}
 	case "--name", "--names":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][8])
 		}
 	case "--lapd":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][9])
 		}
 	case "--morse":
-		for _, valor := range OrdenaMapa(mapDados) {
+		for _, valor := range ordenaMapa(mapDados) {
 			fmt.Printf("%s - %+v\r\n", valor, mapDados[valor][10])
 		}
 	}
@@ -167,7 +167,7 @@ func MostraAlfabetoFormatado(tipo string, valor string) {
 /*OrdenaMapa - A função privada ordena o mapa
  * @Author: Paulo Praxedes
  */
-func OrdenaMapa(mapa map[string][]string) (keys []string) {
+func ordenaMapa(mapa map[string][]string) (keys []string) {
 	for k := range mapa {
 		keys = append(keys, k)
 	}
