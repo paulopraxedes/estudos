@@ -1,4 +1,4 @@
-package goalfa
+package goalfabeto
 
 import (
 	"fmt"
@@ -63,4 +63,73 @@ func MostraTabela(tabela map[int][]string) {
 			fmt.Printf("%+s\r\n", tabela[valor][0])
 		}
 	}
+}
+
+/**
+populaMapa - função que popula um mapa reduzido com o resultado do mapa maior
+*/
+func populaMapa(tabela map[int][]string, index int) (mapa map[int][]string) {
+	mapa = map[int][]string{}
+	for key := range tabela {
+		var vet []string
+		vet = append(vet, tabela[key][index])
+		mapa[key] = vet
+	}
+	return mapa
+}
+
+/**
+convertePalavra - função que converte a palavra desejada ao alfabeto desejado
+*/
+func convertePalavra(tabela map[int][]string, palavra string) {
+	for _, caractere := range palavra {
+		for index := range mapDados {
+			if string(caractere) == mapDados[index][0] {
+				fmt.Printf("%s\r\n", tabela[index][0])
+			}
+		}
+	}
+}
+
+/*MontaAlfabeto - função que monta o mapa com alfabeto desejado
+ */
+func MontaAlfabeto(tipo string, valor string) {
+	tabela := map[int][]string{}
+	switch tipo {
+	case "--romano", "--latino":
+		tabela = populaMapa(mapDados, 0)
+	case "--militar", "--radio", "--fone", "--telefone", "--otan", "--nato", "--icao", "--itu", "--imo", "--faa", "--ansi":
+		tabela = populaMapa(mapDados, 1)
+	case "--royal", "--royal-navy":
+		tabela = populaMapa(mapDados, 2)
+	case "--signalese", "--western-front":
+		tabela = populaMapa(mapDados, 3)
+	case "--raf24":
+		tabela = populaMapa(mapDados, 4)
+	case "--raf42":
+		tabela = populaMapa(mapDados, 5)
+	case "--raf43", "--raf":
+		tabela = populaMapa(mapDados, 6)
+	case "--us41", "--us":
+		tabela = populaMapa(mapDados, 7)
+	case "--pt", "--portugal":
+		tabela = populaMapa(mapDados, 8)
+	case "--name", "--names":
+		tabela = populaMapa(mapDados, 9)
+	case "--lapd":
+		tabela = populaMapa(mapDados, 10)
+	case "--morse":
+		tabela = populaMapa(mapDados, 11)
+	}
+
+	if valor != "" {
+		convertePalavra(tabela, valor)
+	} else {
+		MostraTabela(tabela)
+	}
+}
+
+//GETMap - função GET que retorna a tabela de alfabetos disponíveis
+func GETMap() map[int][]string {
+	return mapDados
 }
