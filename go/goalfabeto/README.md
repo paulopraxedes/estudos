@@ -92,7 +92,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/paulopraxedes/go/goalfabeto"
+	"github.com/paulopraxedes/estudos/go/goalfabeto"
 )
 /*
  * O programa deverá funcionar da seguinte forma:
