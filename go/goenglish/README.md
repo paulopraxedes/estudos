@@ -1,7 +1,8 @@
 # Go English
 
     Go English é a versão em Go do zzenglish.
-    Funções ZZ é um conjunto dos mais variados aplicativos, escritos em shell script, com as mais variadas aplicações. Dentre ele, o zzenglish, objeto deste estudo.
+    Funções ZZ é um conjunto dos mais variados aplicativos, 
+	escritos em shell script, com as mais variadas aplicações. Dentre eles, o zzenglish, objeto deste estudo.
 
 ## O ZZEnglish!
     Abaixo, temos a codificação original, do miniaplicativo.

@@ -2,7 +2,7 @@
 
     Go Alfabeto é a versão em Go do zzalfabeto.
     Funções ZZ é um conjunto dos mais variados aplicativos, escritos em shell script, 
-	com as mais variadas aplicações. Dentre ele, o zzalfabeto, objeto deste estudo.
+	com as mais variadas aplicações. Dentre eles, o zzalfabeto, objeto deste estudo.
 
 ## O ZZAlfabeto!
     Abaixo, temos a codificação original, do miniaplicativo.
