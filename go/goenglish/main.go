@@ -8,6 +8,8 @@ import (
 	"net/url"
 	"os"
 	"strings"
+
+	"github.com/paulopraxedes/estudos/go/gotrim"
 )
 
 func main() {
@@ -25,7 +27,7 @@ func main() {
 				return
 			}
 			fmt.Println("==================== DICT.ORG ====================")
-			fmt.Println(formatBody(body))
+			fmt.Printf("%s", gotrim.BottomTrim(formatBody(body)))
 		} else {
 			fmt.Println("[main] - Server Status Error Description: " + response.Status)
 			return
