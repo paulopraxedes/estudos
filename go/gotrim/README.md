@@ -142,7 +142,8 @@ func LeftTrim(text string) string {
 
 ```
 
-    - Para testarmos o funcionamento da função, podemos pensar em quantos caracteres (len) deveriam ter após a alteração ou qual seria o texto alocado na variável e compará-lo com o resultado esperado.
+    - Para testarmos o funcionamento da função, podemos pensar em quantos caracteres (len) deveriam ter após a 
+	alteração ou qual seria o texto alocado na variável e compará-lo com o resultado esperado.
     Baseado nestes dois casos, poderiamos codificar desta forma:
     
 ```go
